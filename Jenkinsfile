@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = 'us-east-1'
         IMAGE_NAME = 'myapp-ecr'
-        ECR_REPO = '442122590814.dkr.ecr.us-east-1.amazonaws.com/myapp1'
+        ECR_REPO = '442122590814.dkr.ecr.us-east-1.amazonaws.com/myapp'
     }
 
     stages {
@@ -20,12 +20,10 @@ pipeline {
             steps {
                 echo '🐳 Building Docker image...'
                 sh '''
-                    # Disable BuildKit (fixes RST_STREAM error on small EC2s)
+                    # Disable BuildKit to avoid stream errors on t2.micro instances
                     export DOCKER_BUILDKIT=0
-
                     echo "Starting classic Docker build..."
                     docker build -t $IMAGE_NAME:latest .
-
                     echo "✅ Docker image built successfully."
                 '''
             }
@@ -36,7 +34,8 @@ pipeline {
                 echo '🔐 Logging in to AWS ECR...'
                 withAWS(credentials: 'aws_ecr', region: "${AWS_REGION}") {
                     sh '''
-                        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
+                        aws ecr get-login-password --region $AWS_REGION | \
+                        docker login --username AWS --password-stdin $ECR_REPO
                     '''
                 }
             }
