@@ -8,23 +8,32 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout Code') {
             steps {
+                echo '📥 Checking out source code from GitHub...'
                 git branch: 'main', url: 'https://github.com/abhin7821/myapp-ecr-pipeline.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
+                echo '🐳 Building Docker image...'
                 sh '''
-                    echo "Building Docker image..."
+                    # Disable BuildKit (fixes RST_STREAM error on small EC2s)
+                    export DOCKER_BUILDKIT=0
+
+                    echo "Starting classic Docker build..."
                     docker build -t $IMAGE_NAME:latest .
+
+                    echo "✅ Docker image built successfully."
                 '''
             }
         }
 
         stage('Login to AWS ECR') {
             steps {
+                echo '🔐 Logging in to AWS ECR...'
                 withAWS(credentials: 'aws_ecr', region: "${AWS_REGION}") {
                     sh '''
                         aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
@@ -35,10 +44,11 @@ pipeline {
 
         stage('Tag & Push Image to ECR') {
             steps {
+                echo '🚀 Tagging and pushing Docker image to ECR...'
                 sh '''
-                    echo "Tagging and pushing image to ECR..."
                     docker tag $IMAGE_NAME:latest $ECR_REPO:latest
                     docker push $ECR_REPO:latest
+                    echo "✅ Image pushed successfully to: $ECR_REPO:latest"
                 '''
             }
         }
@@ -46,10 +56,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ Image successfully built and pushed to ECR!"
+            echo "🎉 SUCCESS: Image successfully built and pushed to ECR!"
         }
         failure {
-            echo "❌ Build failed, check logs."
+            echo "❌ Build failed. Check logs above for details."
         }
     }
 }
