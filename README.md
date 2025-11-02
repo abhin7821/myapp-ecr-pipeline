@@ -99,10 +99,18 @@ Dashboards imported:
 
 🖼️ Screenshots
 
-Jenkins Pipeline
-ArgoCD Dashboard
-Kubernetes Pods
-Grafana Dashboard
+### 1. ArgoCD Dashboard
+![ArgoCD Dashboard](./screenshots/argo-dashboard.png.jpeg)
+
+### 2. Grafana Monitoring
+![Grafana Dashboard](./screenshots/grafana-dashboard.png.jpeg)
+
+### 3. Application Page
+![Hello Webpage](./screenshots/hello-webpage.png.jpeg)
+
+### 4. Kubernetes Pods
+![Kubernetes Pods](./screenshots/kubectl-get-pods.png.jpeg)
+
 	
 Application Output
 
