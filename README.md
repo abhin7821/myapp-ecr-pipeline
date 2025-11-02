@@ -63,7 +63,7 @@ myapp-ecr-pipeline/
     ├── kubectl-get-pods.png
     ├── hello-webpage.png
     └── jenkins-pipeline-success.png
-'''
+```
 
 ⚙️ CI/CD Workflow Summary
 
