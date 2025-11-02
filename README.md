@@ -134,6 +134,7 @@ Kubernetes monitoring stack (Prometheus + Grafana) completes the DevOps lifecycl
 👨‍💻 Author
 
 Abhin
-DevOps Engineer | Cloud & Automation Enthusiast |
-📧 abhin.devops01@gmail.com |
+DevOps Engineer | Cloud & Automation Enthusiast 
+|
+ abhin.devops01@gmail.com |
  https://github.com/abhin7821
