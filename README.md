@@ -66,6 +66,7 @@ myapp-ecr-pipeline/
 '''
 
 ⚙️ CI/CD Workflow Summary
+
 1️⃣ Jenkins (CI)
 
 Triggers automatically when code is pushed to GitHub.
@@ -97,11 +98,11 @@ Dashboards imported:
 📊 14584 — ArgoCD Metrics
 
 🖼️ Screenshots
-Jenkins Pipeline	ArgoCD Dashboard
 
-	
-Kubernetes Pods	Grafana Dashboard
-
+Jenkins Pipeline
+ArgoCD Dashboard
+Kubernetes Pods
+Grafana Dashboard
 	
 Application Output
 
