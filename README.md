@@ -1,4 +1,4 @@
-# 🚀 End-to-End DevOps CI/CD Pipeline (Jenkins + Docker + ECR + EKS + ArgoCD + Grafana)
+## 🚀 End-to-End DevOps CI/CD Pipeline (Jenkins + Docker + ECR + EKS + ArgoCD + Grafana)
 
 ### 📘 Overview
 This project demonstrates a **complete CI/CD GitOps pipeline** for a sample Python web application.
@@ -134,6 +134,6 @@ Kubernetes monitoring stack (Prometheus + Grafana) completes the DevOps lifecycl
 👨‍💻 Author
 
 Abhin
-DevOps Engineer | Cloud & Automation Enthusiast
-📧 abhin.devops01@gmail.com
+DevOps Engineer | Cloud & Automation Enthusiast |
+📧 abhin.devops01@gmail.com |
  https://github.com/abhin7821
